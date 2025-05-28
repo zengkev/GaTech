@@ -1,0 +1,943 @@
+P1:L1
+Cyber Security : secure something of value from threat ie electric and company data
+
+Security Mindset
+ 1. How to understand the risk online
+2. What is the threat source: criminal, hacktistivism and nationstate
+3. What are the vulnerability and attacks: actors > threats > weakest link
+
+
+
+What to do in Cysec?
+Make threat go away
+Reduce vulnerability
+CIA > must meeting requirements
+
+Policy (Prevention > Detection > response > recovery and remediation ) = how
+
+How to address CySec?
+Keep it simply design
+Principle of least privileges
+Open Design > open source
+Fail-Safe Defaults
+Don’t ask human to do thing!! Psychological acceptability 
+KeyPoint: Human Sucks
+
+
+P1:L2
+Software Security
+Buffer Overflow: 
+
+Stack: 1. Local Variable + Parameters + Control Information (return address)
+Example: limited character but what if they enter more “character”
+
+
+
+
+What is a stack?
+
+High Address vs Low Address > when you push code into the stack High > Low
+
+Stackover is when you don’t limit the stack and input is greater than the allowed space on the stack. Aka bad code and accepted and store into overflow memory space
+
+Solution: 1. Change variable
+2. Limit input
+
+ShellCode: creates a shell which allows it to execute any code the attacker wants
+
+
+Variation of Buffer Overflow
+Return-to-libc: return address is overwritten to point to standard library function
+Heap Overflow: data stored in heap is overwritten. Data can be tables of function pointers
+OpenSSL heartbleed:
+
+
+Defense: 
+Languages: strongly typed, auto check bounds, auto memory management
+Safe Languages: Java, C++ but performance degradation 
+
+What is unsafe language? 1. Check input, 
+
+
+Stack canaries: the value to check if there was an buffer overflow. 
+ASLR: address space layout randomization > randomize stack, heap, libc
+
+
+P1:L3 Operating System Security
+
+Operating system: 
+easier to use and high level abstraction for resource for address space and files on disk blocks
+Provide control of access
+Provides isolation of process and sharing resources btw trusted and untrused process
+
+But why trust an operating system?
+TCB : trusted computing base aka key to the kingdom
+Complete mediation
+Tamper proof: 
+Correctness
+
+OS controls access: (check and authorized system)
+Source of  a request
+Authorization or access control
+Allow various policies
+
+
+What is system call? Is a protected procedure call. Think about the cost of this call
+User code > os code
+Cost most = most instruction
+
+How can we trust an OS?
+Must be isolation or tamper proof
+System code = trusted and user code = untrusted
+Privileged instruction can only execute in system mode
+
+
+User code isolation: 
+this mode can’t access hardware support for memory protection
+
+Address Space: unit of isolation.. Complete isolate data and code
+Process thinks larger than available physical memory
+Code and data has to storage in physical memory eventually
+Logical address maps to physical address managed by page table
+
+Process Protection:
+
+What is MMU (memory management unit)? Uses page table to resolve logical address to physical address
+RWX access for page memory
+
+
+Non-executable stack: store instruction on this stack but can’t execute (read and write only)
+
+OS reside in a portion of each process
+Process can only cross in a control manner
+
+Example: lower 3 GB for user data and top 1 GB is for kernel (never 126 GB when sold)
+(this is wha twe call User/Kernal memory split)
+
+OS Mediation:
+
+Make sure that no protected resource could be access without TCB
+TCB is the reference bases for all access
+User code has to use address space to access physical space via TCB
+OS virtualize physical resource via API
+Only OS can execute persistent data on disk
+
+Virtualization: running multiple OS on a single hardware
+Using hypervisor via virtual machines
+Hypervisor = TCB in this case
+Security in layers via virtualization separate OS for applications
+
+
+Correctness:
+Smaller and simpler is always better
+Secure coding 
+
+P1:L4 Authentication
+
+You authenticate who to give authorization to what resources
+
+Evident who you are
+Permission on what you can access
+
+Goals: 1. Availability 2. NO FALSE NEGATIVES
+
+How is authenicaiton implemented
+Something you know
+Something you are
+Something you have
+
+Threat Modeling of the Password Method:
+Guessing the password
+Impersonating a login program
+Keylogger on OS
+** importance of a trusted path: 
+Provide by the OS 
+Knowing when talking to OS
+
+
+Passwords: 
+Hashing
+Brute force is possible 
+Start with what you know and rainbow table (hash table)
+Salting
+Problems: long and complex = usability suffers
+Phishing and social engineering = user sucks
+Other authentication methods:
+Something you have
+Something you are
+Multi-factor authen > SMS + Password
+Location
+
+P1:L5 Access Control
+
+Controlling access to Resources:
+TCB (reference monitor) : see the request and whether to grant permission
+Authentication: establish the source of a request
+Authorization: access control (allow or not)
+
+Who is allow to access:?
+Decide who should (access control policy)
+Enforcement (only grant)
+	
+Complete mediation ?
+
+
+Access Control Matrix (ACM)
+Row: user, subjects, groups
+Columns: resource  ie: [U, p] 
+
+Access Control List (ACL)
+
+ACL is for object
+C-List is for user access – having capability (ie movie ticket)
+
+Access Control Implementation 
+
+In Unix, setuid: Alice and Bob, if setuid is set, alice becomes bob temporarily 
+
+How system call file? 1. Create file 2. Open file (filename, mode) 3. 
+
+Role based Access Control (RBAC)
+User > Role > Rights (principle of least privilege)
+
+P1: L6 Mandatory Access Control
+DAC (owner decides) vs MAC (
+
+When does DAC fail:
+Can control secondary sharing (information flow control) 
+Ownership of resource 
+Mandatory Access Control (MAC) helps address DAC problem
+
+Example: payroll data is sensitive
+
+
+Labeling:  TS > S > C > 
+Can’t compare if element isn’t the same or subset of each other.
+
+MAC: Confidentiality // only companies can decide what permission
+
+Bell and La Padua BLP model 
+Assuming TS, S, C, U
+Read / write rules
+A. User with label L1 can read docu with label L2 or read down rule
+Write up rule
+
+Commercial Enviornments:
+Clark-Wilson Policy
+User get to use program
+Transaction to objects
+Same user cannot execute two programs that requires separation of duty
+
+Chinese Wall Policy
+Deals with conflict of interest
+What is a conflict class? Bank vs oil companies
+User can access any object as long as not in same conflict class
+
+
+How do we know TCB can be trusted?
+Secure vs trusted vs high assurances: 
+Secure
+Trusted - reliable
+Assurance  - 
+
+TCB Design Principles
+
+Least privilege
+Econom
+Open design
+Ease of use
+Complete mediation : access checked
+Fail-safe defaults
+
+
+How do we build a TCB??
+Key security features. 
+Must implement 
+A. authentication 
+B. access control
+C. MAC
+D. DAC
+
+
+Data Protection: 
+OS must protect itself
+Object reuse protection
+Secure file deletion
+Secure disk destruction
+
+
+
+Trusted Path: this path is from user to secure system
+Log showing object accesses 
+When protection fail, detection has to be available 
+
+What naked a good Kernel Design? 
+Security kernel
+Small size
+Good isolation
+Tamperproof
+Un-bypassable
+
+Testing: regression testing is to increase confidence (penetration testing)
+
+
+P1:L7 Database Security
+
+Why secure data in databases?
+Database stores massive amount of sensitive data
+Data has structures
+Access via queries like SQL
+Transactional nature of queries (updates or read)
+
+Relational Database Systems (RDBS)
+
+Row and columns
+Foreign vs Primary Key
+
+
+
+Database Access Control (after authentication)
+Grant vs Revoke
+MAC 
+
+Attacks on Databases: SQL Injection
+
+
+
+Inference Attacks
+De-identification and anonymization (defense)
+
+
+P2L1 Malicious Code
+
+Malware = host program vs independent 
+
+What is a trap door, logic bomb, trojan horse and virus
+
+Virus Structure: 
+Virus wrap the original program and first line of go to “main”
+Find uninfected program
+Parasitic virus: scan/infect programs
+Memory resident virus: infect running programs
+Macro 
+Boot sector virus
+Polymorphic virus
+
+
+P2L2 Modern Malware
+
+Profit and political gains 
+Botnet: compromised computer under control of the attacker
+Spam
+DDOS
+Phishing and pharming
+Key logging
+Anonymized communication
+Cheating on polls and games
+
+Command and Control: 
+
+Communication via DNS using IP address with bots and botmaster
+Anomaly detection to find bots
+
+
+APT (advanced Persistent Threat)
+Special malware to target special target
+Persistent :slow and low and taking a long time
+Target high value 
+Life_cycel of APT > define > research > test > deploy > 
+Uses zero day exploit 
+
+Example: PDF  > CEO > extension > modify email PDF > other employees
+
+
+
+P2:L3 Firewalls
+
+DiD - Defense in Depth
+
+Prevent
+Detect
+Survive
+
+Firewall: a secure device to connect between different networks
+
+Design Goal: a. Enforce of security policies
+B. traffic must pass firewall
+C. access Policy: list the type of traffic ie. range, protocol
+
+Limitation: firewall cannot protect if traffic didnt cross or internal traffic or misconfigured
+
+Firewall = filtering
+
+Packet Filtering
+Rule for protocol for permit or deny
+Deny > permit
+Simplicity + fast
+Can’t block allowed application
+Spoofing 
+
+
+
+
+Session Filtering : based on context or stateful inspection
+
+Connection State Table
+More logical rules
+Application Level Gateway (slower but secure)
+
+Bastion Hosts: using access proxy with limited access and storage of code
+
+Firewall topography 
+
+
+P2:L4 Intrusion Detection
+
+IDS > design to counter threats
+Only good for known attacks not zero days
+
+Intruder behavior: 
+Recon
+Initial access
+Privilege escalation
+Information gather (pivot)
+Maintain access
+Covering track
+
+Element of Intrusion Detection
+Observable system activities
+What is normal
+Data > preprocessor > detection engineer > decision engine > report
+
+Analysis Approaches: 
+Anomaly Detection (what is normal?)
+Misuse detection
+Statistical + ML + 
+Efficiency vs cost of detection
+
+
+Machine Learning Approaches
+Neural networks
+Clustering and outlier detection
+
+Signature approaches = firewall  ie low cost but no zero day
+Rule based Detection  = 
+
+Network IDS: examine the network pcap data
+
+Host IDS: ptrace for operating system event to evaluate call from the host
+
+
+
+
+
+What is SNORT?
+
+Packet > decoder > detection engine then log or alert
+IDS tool
+
+Honeypots: decoy system to lure attacks
+How to set up honeypot
+
+What makes IDS is good? 
+Detection rate on TP (true positive)
+False positive
+True negative
+Bayesian detection rate (if alert, how likely it is an intrusion)
+
+Bayesian Detection Rate: higher the better
+
+How to defect an IDS?
+End host and IDS see different traffic
+Insertion attack: include value in bad checksum
+Evasion attack: hide part of the attack or fragmentation
+DOS attack to overwhelm IDS
+
+
+
+
+
+P2L5
+
+Encryption:
+
+Plain text > encryption > ciphertext > decryption > plaintext ** need lock and key
+
+Other services: integrity checking ; authenticity ; authentication
+
+Asymmetic cipher = authentication of the parties
+Symmetric = encryption of data
+
+Attacks on Encryption: 
+
+Break the cipher
+Brute force attack
+Cryptanalysis
+Implementation attacks
+Social engineering attacks
+
+Type of cipher: 
+Caesar
+Substitute
+Vigenere cipher : matches
+
+Type of Cryptography: 
+Secret key cryptography: 1 key system
+Public key cryptography: 2 key system
+Hash Function > one way trip
+Weak collision resistant
+Strong collision resistant
+
+Symmetric Encryption: 
+
+Asymmetric Encription: 
+
+Example: Bob has public key X Y Z AND D
+Alice has private key X
+Bob + X = Alice + X
+
+Problem with Public Key infrastructure: 
+
+Anyone can issue public key and lack of trust
+Need a Certificate Authority as the trusted company
+
+Digital envelope as the new concept
+
+
+P2: L6 Symmetric Encryption
+
+Block Cipher Scheme:   length to length
+
+Confusion: 
+Diffusion: increase with permutation and use many rounds
+
+Data Encryption Standard
+
+Key: 4 bit
+DES > 64 bit input > 64 bit output
+ 
+XOR
+
+
+
+DES: short key space 2 to 52 power
+Secure: Triple DES > using 3 keys  ( bit size depends on different amount of similar keys)
+
+AES:  128 bit block + 128 bit or 258 or 526 bit key
+
+
+Encrypting a Large Message? 
+Break message into blocks 
+Apply block 
+ECB or electronic code book > 
+ECB has problems
+
+Cipher Block Chaining: (CBC)
+
+
+
+Modular Arithmetic
+
+ 
+
+Mod of Positive Number
+
+
+Mod of Negative Numbers
+When dealing with negative numbers recall:
+
+     If A is a negative number : A = Q * B + R 
+     Q = floor(A/B)
+
+https://en.wikipedia.org/wiki/Floor_and_ceiling_functions
+
+Floor for negative number vs positive number
+
+
+Congruence
+
+     A == B mod(C) 
+     means 
+     A mod(C) = B mod(C) 
+https://en.wikipedia.org/wiki/Congruence
+
+(26 mod 5=1) and (11 mod 5=1) so…
+(26==11 mod 5)
+
+Addition and Subtraction
+
+
+Recall: 
+     (A + B) mod C = (A mod C + B mod C) mod C 
+     (A - B) mod C = (A mod C - B mod C) mod C
+
+(724 mod 17) is equivalent to:
+(700 mod 17+20 mod 17+4 mod 17) mod 17
+(700 mod 17+24 mod 17) mod 17
+
+Multiplication
+     (A  B) mod C = (A mod C *  B mod C) mod C 
+
+
+(AB)mod 17=(15∗9) mod 17=16
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fast Exponentiation
+
+
+
+
+
+
+
+
+
+
+
+Inverse mod
+
+
+
+
+
+
+
+Co-Prime
+
+
+
+
+
+
+
+Relatively Prime
+Describes two numbers for which the only common factor is 1. In other words, relatively prime numbers have a greatest common factor (gcf) of 1. 
+
+For example, 6 and 35 are relatively prime (gcf = 1). 
+The numbers 6 and 8 are not relatively prime (gcf = 2).
+
+
+Totients
+The totient function phi(n), also called Euler's totient function, is defined as the number of positive integers <=n that are relatively prime to (i.e., do not contain any factor in common with) n, where 1 is counted as being relatively prime to all numbers.
+
+Since a number less than or equal to and relatively prime to a given number is called a totative, the totient function phi(n) can be simply defined as the number of totatives of n. 
+
+For Example: 
+
+The number 24 has eight totatives (1, 5, 7, 11, 13, 17, 19, and 23), so phi(24)=8 
+The number 17 has 16 totatives (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16), so phi(17)=16
+
+
+
+P2L7
+
+Public Key Crypotgraphy
+
+Additive inverse is sum of (A and B) mode X = 0
+
+Modular Multiplication: Euclid
+Given x, n, it finds y such that x ( y) mod n = 1
+
+Totient Function: x is relatively prime to n: no common factor other than 1
+If n is prime, totient of n = n -1
+
+
+Modular Exponentiation
+
+
+
+
+
+
+
+
+
+
+
+
+RSA characteristics:
+
+
+
+
+
+
+
+Why is RSA Secure? 512-bit is very hard and long to compute
+
+Issue with RSA
+Deterministic > plaintext 0 will map to ciphertext 0
+Malleable > c = m to e mod n where c can be multiplied by 5 or any digit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What is Diffie and hellman key exchange?
+
+
+
+
+
+Only if q and alpha is large
+
+
+
+!! Diffie is not for authentication and no encryption 
+
+Other aggro:
+
+SHA-1 and DSA 
+
+ECC: elliptic curve cryptography: > new but eliptic curve > using point multiplication
+
+
+
+P2:L18 Hashes
+
+
+
+
+Weakness:
+Pigeonhole principle: 
+Birthday paradox: 
+
+
+
+
+What is SHA-1?
+
+
+
+P2L9 Security Protocols
+
+Using PKI and symmetrical key
+
+Authentication: Shared Secret like Diffie
+
+
+
+Reflection Attack:
+
+
+
+What is Kerberos?
+
+Authentication and access control in network environment
+
+
+
+
+
+
+P2: L10 IPSec and TLS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+P2: L12 Web Security
+
+How does the web works: 
+
+Client < URL request and HTML response> server  < >files and resources 
+
+Cookies: HTTP is stateless thus need cookies
+
+Issue with web and security
+
+Cross Site Scripting (XSS)
+
+Allows user to input data like facebook 
+Website echo user data to another user
+
+Cross-Site Request Forgery
+
+Browser run a script from a good sit and a malicious script from another bad server
+
+
+
+
+
+
+
+SQL - structured query language
+
+
+
+Login form
+
+
+
+
+
+
+P3:L1 Cybersecurity
+
+Managing security
+Technical controls
+What asset?
+Legal and compliance
+Cost and benefit?
+
+
+What technical solution and if cost > reduction of risk
+
+
+Security Planning:
+What needs to be secured?
+Who is responsible?
+What control (tech/non tech)
+How are the supports?
+What if something goes wrong?
+Response and recovery
+Accountability and consequences?
+
+Assets vs Threats:
+What need to secured and from whom?
+
+
+
+
+‘
+What is controls?
+Network
+VPN or BYOD
+Vulnerability patching
+User awareness and education
+Controls
+IAM
+Credentialing, acc creation and deletion
+Password policies
+
+Security policy:
+
+High level articulation of security objectives and goals like we don’t want to be unsecure
+
+legal , business and regulatory rationale
+Response to security event
+Password length
+Address prevent, detection, response and recovery NIST
+
+Cyber Risk Assessment
+
+Investment in cyber is driven by risk and how much control reduces it
+Risk = prob. Adverse event * impact 
+
+Put a number on risk:
+
+
+
+Managing cyber Risk:
+
+
+
+
+Cyber Insurance : not so popular (2014)
+
+
+Enterprise Cyber Security Posture:
+
+How good is your cybersecurity?
+
+Reactive: regulation/compliance + customer demands + breach
+Proactive: champion of organization + CISO + board conversation 
+Economic value argument: ROI + control saves $$ 
+Estimating cost and benefit
+Perception vs data driven
+Empower people and hold them to responsible
+Do not be surprised
+
+
+Cyber Security Budgeting:
+
+
+
+
+
+P3: L2 Law - Ethics and Privacy
+
+

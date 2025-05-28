@@ -1,0 +1,186 @@
+Useful tips:
+
+Commit command standards:
+
+https://www.conventionalcommits.org/en/v1.0.0/
+https://nvie.com/posts/a-successful-git-branching-model/
+
+Git config –global user.name “name” // make a git
+Git config –global user.email 
+
+Git status // tell you a repo status
+
+Git init // create a git’
+
+Git add FILE
+Git status // you see FILE
+Git commit “comment”
+
+Shortcut: git commit -a 
+
+Git diff FILE // different btw a fil 
+
+Git commit -a // commit all file  | -m  // with a message
+
+Git log // get the version history
+
+Git show  #commit id // you will get the detail
+
+Git clone +address // download the git
+
+Git remote -v // where is the remote repo
+
+Git push // add the current commit to the repo
+
+Git pull // pull the changes from the repo
+
+Let’s create a branch // testing and change 
+
+Git branch // see which branch you are in
+
+Git branch newBranch // create a new branch
+
+Git checkout newBranch // git switch 
+
+Git checkout -b newBranch // same of both command above
+
+Git merge newBranch // merge with master branch
+
+Git branch -d newBranch // delete branch
+
+
+
+
+
+
+Assignment 2: Git Usage
+
+In this assignment, you will get familiar with Git and some of its main features. The assignment assumes that you are working from the command line, and we will simulate the presence of multiple users using two terminal windows. If you are already familiar with Git and a specific Git client, feel free to use that, as long as you do what the assignment requires.
+
+In the following, we use the term “REPO” to indicate the personal repository we assigned to you, which is named:
+
+  https://github.gatech.edu/gt-omscs-se-2025summer/6300Summer25<your GT username>.git
+
+Notes:
+You may receive an email at your official Georgia Tech email address when we create your repository.
+If you have not received the above email within a day from the release of this assignment despite having completed Assignment 1, make sure to check your spam folder and that you are actually checking your GT email address. However, GT GitHub does not always send these emails.  If you do not get one, you should still be able to log into https://github.gatech.edu/gt-omscs-se-2025summer or use the ‘GT GitHub’ link from Canvas and see the repo assigned to you.  
+We will not be able to give you access to REPO until you activate your GT GitHub account, (i.e., you must have logged at least once into https://github.gatech.edu/).
+
+Please contact us on Ed Discussion in case of problems and, once more, make sure to use the repository we assigned to you and not one you created. All individual assignments for this class should be done in this assigned private repository only.
+
+Please also make sure to read the whole assignment before getting started and to follow the instructions we provide to the letter (e.g., use the exact (to the letter) commit messages provided in the assignment, rather than variations of them). If you don’t know how to accomplish a task, either consult Git’s help by running “git --help <command>” or leverage online resources (there are plenty, such as this Git cheat sheet or StackOverflow’s Git for beginners​​). If you receive an error while executing a Git command, make sure to read the error message–Git often suggests exactly the right thing to do. Every time you ask the teaching staff to do something that has been clearly stated in this assignment that we won’t do for you, your points may be deducted.
+
+If you are not familiar with Git and feel completely lost, we suggest that you have a second look at the Git demo in P1L4 and mimic the steps in the demo on your machine, taking into account that the demo uses a standard GitHub and not a GT GitHub repository. In addition, you can also take the tutorial at http://try.github.io/levels/1/challenges/1, which should further get you familiar with Git’s basic concepts.
+
+We also suggest that you use GitHub's "Network" view to monitor the state of your local and remote repository throughout the assignment. To do so, go to the GT GitHub page for your REPO, select menu "Insights" at the top, and then select the "Network" tab at the left. In this way, you will have a visual representation of how the repository evolves, which can be very useful for better understanding Git and how it operates. Other pages in GT GitHub show the list of commits and the tags (under ‘releases’). Furthermore, we provide a screenshot of how your repository should look at the end of each part of the assignment, which you can use as a reference. You can also run "git log --graph" from the command line, which outputs a text-based representation of the same information, but we do not provide a reference output for this representation.
+
+Finally, you may practice this assignment on a separate repository and then perform the assignment on REPO when you feel comfortable with the various commands. (This would also allow you to get started before you receive your official repo from us.) If you were to make a mistake while working on REPO and you wanted to restart from a clean slate, in most cases you should be able to do so by executing the repo reset instructions.
+Assignment Instructions:
+Preliminary note: We strongly recommend that you (1) clone your GitHub repo using HTTPS and (2) use a credential helper to tell Git to remember your GitHub username and password, so that you don’t have to re-login every time. You can find instructions on how to do so here: https://help.github.com/articles/caching-your-github-password-in-git/#platform-all 
+In all steps, the quotation marks are only to designate specific text labels and commands, and are not part of the required text.  Do not add any additional text to the files or commit messages other than what is specified. Copy and paste is suggested as you must match this document exactly. If a step cannot be completed as specified, such as git not allowing a merge commit when one is specified, you may have made an error earlier in the instructions.
+Part 1 (Terminal 1)
+Before you start, make sure to specify your name and email address using the command “git config”, if you haven’t already.  
+Open a terminal window
+Create and go to directory User1
+Clone REPO
+This should create a directory called 6300Summer25<your GT username> under directory User1.
+Go to directory 6300Summer25<your GT username>  (here you can also open the Network view in GT GitHub and start monitoring how your repository evolves)
+Make sure that the directory contains a file called MyPrivateRepo
+Create and go to directory Assignment2 (under 6300Summer25<your GT username>)
+Create a file called myinfo.txt that contains only one line with your first and last name.  Ensure that the file extension is correct for this and later files.
+Commit the file to your local repo with comment “Added myinfo file” 
+Create a branch called “development” and switch to it
+Create a file called dev1.txt that contains the text “Dev 1 file”.
+Commit the file to your local repo (it should be in branch “development”) with comment “Added dev1 file”
+Switch to the “main” branch
+Edit file myinfo.txt and add your GT Email (e.g., gpburdell27@gatech.edu) on the next line.
+Commit the file to your local repo with comment “Edited myinfo file”
+Merge the “development” branch into the “main” branch with commit message
+“Merge #1”
+Push all branches to the remote repository
+
+At this point, your remote repository should look like the one in the figure below in the "Network" view on GT GitHub. If it doesn’t, it means that you made a mistake in one of the steps.
+
+
+
+ Part 2 (Terminal 2)
+Open a second terminal window
+Create and go to directory User2
+Clone REPO
+Just like before, this should create a directory called 6300Summer25<your GT username> under directory User2
+Go to directory 6300Summer25<your GT username>/Assignment2
+Switch to the “development” branch
+Create a file called dev2.txt that contains the text “Dev 2 file”.
+Commit the file to your local repo (it should be in branch “development”) with comment “Added dev2 file”
+Create a branch called “temp” and switch to it
+Create a file called mytemp.txt that contains the text “Mytemp file”.
+Commit the file to your local repo (it should be in branch “temp”) with comment
+“Added mytemp file”
+Create and commit to branch “development”, with the comment “Added dev3 file”, a file called dev3.txt that contains the text “Dev 3 file”.
+Merge the “temp” branch into the “development” branch with commit message
+“Merge #2”
+Merge the “development” branch into the “main” branch with commit message
+“Merge #3”
+In the main branch, edit file myinfo.txt and add the semester and year 
+(i.e., “Summer 2025”) in a separate line.
+Commit the file to your local repo with comment “Edited myinfo file again”
+Push all branches to the remote repository.
+
+At this point, your remote repository should look like the one in the figure below in the "Network" view on GT GitHub. If it doesn’t, it means that you made a mistake in one of the steps.
+
+
+ Part 3 (Terminal 1)
+Go back to the first terminal
+Make sure to be in branch “main”
+Edit file myinfo.txt and add this text on the next single line of the file, using your own username: “6300Summer25<your GT username>”
+Commit the file to your local repo with comment “Edited myinfo file for the third time”
+Push the main branch (not the other branches) to the remote repository. To do so, you will have to pull changes from the remote repository and suitably handle conflicts. In handling conflicts, make sure not to lose any content, not to have any of the extra text added by Git to mark the conflicting parts, and to preserve the order of the information as it appears in the assignment on four separate lines: first and last name, GT email, semester, and repository name (i.e., 6300Summer25<your GT username>). Use commit message “Final merge with conflicts fixed” for the additional commit after merging and handling the conflicts.
+Tag the current version of the main as “V1” and push the tag to the remote repository. Use a LIGHTWEIGHT tag. 
+At this point you are done, and your remote repository should look like the one in the figure below in the "Network" view on GT GitHub. If it doesn’t, it means that you made a mistake in one of the steps. Given the fact that this assignment is fairly simple, as it mainly consists of executing the provided steps, we expect the network view to match the figure below exactly, with branch labels as shown and no missing or extra commits. We will deduct points if this is not the case. 
+
+
+
+
+Similarly, we expect all the complete commit messages, branches, the folder, the lightweight tag, the tag name (V1), file names, file extensions (.txt), and the content of the files in the repo to be correct to the letter.  Do not include extra labels, any default text, or additional content in your files, tags or messages.  Review the network view, your commits list, the files, and the tag page.
+
+As stated above, if your network view differs from the one provided, it means that you made a mistake in following the provided instructions, so you should try solving the assignment again before posting screenshots of your network and asking for suggestions. Please keep in mind that this is a fairly simple assignment in which all you have to do is to perform the provided steps, so you should not really need any external help.
+
+Here are some additional views from GitHub that you can use to further check your submission:
+
+
+
+
+
+
+Submission
+To submit your solution, you should:
+Retrieve the commit ID for your submission by running “git log -1” in Terminal 1 after the last (successful) command--the commit ID is the long hexadecimal number after "commit".
+Submit on Gradescope a file, called submission.txt that contains, in two separate lines (1) your GT username and (2) the commit ID for your submission. For example, the content of file submission.txt for George P. Burdell could look something like the following:
+submission.txt
+gpburdell1
+81b2f59
+
+As soon as you submit, your assignment will be graded by checking that your graph is correct and that you created the right files with the right content. After that, you will see a report with your grade and some corresponding feedback. The feedback should be self-explanatory, but please let us know if something is not clear.
+The grade you will see on Gradescope is your actual grade for the assignment.
+You can resubmit as many times as you want before the deadline, so you have a chance to address any issue Gradescope finds with your submission.
+Note: the autograder for this assignment is a fairly sophisticated piece of code that we developed recently. Please let us know if you observe any unexpected behavior.
+Repo Reset Instructions:
+
+
+IMPORTANT:
+These are instructions that you should follow only if you mess up your REPO (eg. you have an incorrect commit message, or commited the wrong thing at the wrong time). Please don’t ask us to reset your repo, as we would simply run the same instructions described below, which is something you can do without our help.
+This is one of the few cases in which we recommend the use of the “git push --force” command, which we otherwise strongly discourage, as it can have disastrous effects.  Do not use these commands on your repository after this assignment, or any similar commands that may remove history, remove branches, remove tags, or change prior commit IDs, including “--force” or “-f” commands.  There is no need to clean up your repository at any point after this assignment is completed.
+Some of the above commands may fail if you haven't yet done what they are trying to undo. These errors can be safely ignored.
+Run “git log” from within your local repository
+Get the last commit ID in the list (i.e., the one with the earliest date, which should have “Initial commit.” as its associated comment.)
+Run in each of the two terminals (one for User1 directory and the other one for User2 directory), and from the root of your repo (directory 6300Summer25<your GT username>)
+git checkout main
+git branch -D development temp
+git push origin :development
+git push origin :temp
+git tag -d V1
+git push origin :V1
+git reset --hard <last commit ID>
+git push --force
+After resetting the state, there is no need to re-clone the repository (i.e., there is no need to perform the first 5 steps of the instructions).
+

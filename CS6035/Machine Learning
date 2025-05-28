@@ -1,0 +1,638 @@
+https://www.youtube.com/watch?v=i_LwzRVP7bg
+
+Adding name to column
+
+Cols = [“ some name ….
+Df = (csv , name = cols ) 
+
+
+
+Converting to 1 and zero
+
+
+
+Unsupervised learning : use clustering
+
+Reinforcement training (reward or computer agent)
+
+One-Hot Encoding: 
+
+Supervised learning: inputs > model > output
+
+
+Preparing Data
+
+Oversample > scale_dataset
+
+
+
+K-means
+
+Input dataset
+
+Import pandas
+Import numpy
+Import seaborn
+Import matplotlib
+
+Cols = [ x y z]
+Df = pd.read_csv name = cols sep=”\s+”)
+
+For i in range(len(cols)-1):
+	For j in range(i+1, len(cols -1):
+	X_label = cols[i]
+	Y_label = cols[j]
+	
+	
+
+Clustering
+
+From sk.learn import kmeans
+
+X = ‘perimeter’
+Y = ‘asymmetry’
+X = df([x, y]).values
+
+Kmeans = kmeans(n_clusters =3).fit(x)
+Clusters = kmeans.labels
+cluster.df = pd.DataFrame(np.hstack(X, clusters.reshape(-1, 1)), columns = [x, y, “class”]
+
+
+
+
+
+
+
+Introduction to project
+https://www.youtube.com/watch?v=kYoQiAamIpQ&t=34s
+
+Setup:
+
+
+Important links
+
+https://github.gatech.edu/pages/cs6035-tools/cs6035-tools.github.io/Projects/Machine_Learning/Task1.html
+
+https://machinelearningtutorials.org/a-comprehensive-tutorial-on-pandas-series-in-python/
+
+
+https://www.geeksforgeeks.org/python-pandas-series/
+
+
+Pandas
+
+https://pandas.pydata.org/docs/
+
+Numpy:
+
+https://numpy.org/doc/stable/user/absolute_beginners.html
+
+
+Youtube Channel on ML
+
+https://www.youtube.com/watch?v=6nGCGYWMObE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+IMPORTANT for task 5
+
+Here are the past student submissions, sorry these go back to Fall 23 on this project. Let's post new links as the project runs for the future students, thanks.
+
+Information on these websites helped me for task4:
+
+https://stackoverflow.com/questions/31324218/scikit-learn-how-to-obtain-true-positive-true-negative-false-positive-and-fal
+
+https://stackoverflow.com/questions/36681449/scikit-learn-return-value-of-logisticregression-predict-proba
+
+https://stackoverflow.com/questions/74214863/recursive-feature-elimination-rfe-with-random-forest
+
+https://stackoverflow.com/questions/34133494/sorting-a-pandas-series-in-absolute-value
+
+Information on this website helped me decide which model to use for task5:
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9862094/
+
+Really good basic tutorial on ML on the Advent of Cyber at TryHackMe for day 2. 
+
+https://tryhackme.com/room/adventofcyber2023
+
+https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html
+
+https://archive.is/HNbiP 
+
+Helpful to understand clustering and how to obtain the cluster ID's:
+
+https://realpython.com/k-means-clustering-python/#overview-of-clustering-techniques
+
+
+
+
+
+Task 1: 
+
+Setup was interesting and here are the important bullets
+
+Make sure the version is correct and using Pycharm avoids a lot of bugs
+Differences between task1.py and test_task1.py
+task1.py is for your code
+Test_task1.py don’t change anything and using the debug function
+
+
+pd.DataFrame : imagine this as the table and we are configuring it using panda
+Colume_name: it’s an one dimensional array or series
+
+What is series in pandas?
+
+A Pandas Series is a fundamental data structure in the Pandas library for Python. Think of it as a one-dimensional labeled array that can hold data of any type – integers, strings, floats, Python objects, and more.
+
+Find_data_type
+
+https://github.gatech.edu/pages/cs6035-tools/cs6035-tools.github.io/Projects/Machine_Learning/Task1.html#find_data_type
+
+Note:
+Read the documentation and all the answer is there.
+
+
+
+
+A Comprehensive Tutorial on Pandas Series in Python - MachineLearningTutorials.org
+
+import pandas as pd
+import numpy as np
+
+# data will be column_name
+data = np.array(['g', 'e', 'e', 'k', 's'])  
+#series will be dataset.dtype
+ser = pd.Series(data)
+print(ser)
+
+
+
+def set_index_col
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html
+
+How to set index
+
+pd.Index([1, 2, 3])
+Index([1, 2, 3], dtype='int64')
+
+
+>>> pd.Index(list('abc'))
+Index(['a', 'b', 'c'], dtype='object')
+
+
+>>> pd.Index([1, 2, 3], dtype="uint8")
+Index([1, 2, 3], dtype='uint8')
+def set_index_col(dataset:pd.DataFrame,index:pd.Series) -> pd.DataFrame:
+   # TODO: Read https://github.gatech.edu/pages/cs6035-tools/cs6035-tools.github.io/Projects/Machine_Learning/Task1.html and implement the function as described
+   dataset.index = index
+   print(dataset.index)
+   return dataset
+
+======================== 5 passed, 4 warnings in 2.67s ========================
+PASSED       [ 20%]   target   color  version   cost  height
+0       0     red        1   5.99      12
+1       0   green        2   5.99      13
+2       0    blue        3   5.99      14
+3       0     red        1   5.99      15
+4       0  purple        4  10.99      16
+5       1  orange        5  10.99      17
+6       1  yellow        6  10.99      18
+7       1   green        2  12.99      19
+8       1    blue        3  12.99      20
+9       1     red        8  12.99      21
+
+
+Def reset_index_col
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.reset_index.html
+
+======================== 1 passed, 4 warnings in 3.99s ========================
+PASSED         [100%]   target   color  version   cost  height
+2       0    blue        3   5.99      14
+8       1    blue        3  12.99      20
+4       0  purple        4  10.99      16
+9       1     red        8  12.99      21
+1       0   green        2   5.99      13
+6       1  yellow        6  10.99      18
+7       1   green        2  12.99      19
+3       0     red        1   5.99      15
+0       0     red        1   5.99      12
+5       1  orange        5  10.99      17
+
+
+
+def set_col_type(dataset:pd.DataFrame,column_name:str,new_col_type:type) -> pd.DataFrame:
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.astype.html
+
+======================== 1 passed, 4 warnings in 3.00s ========================
+PASSED        [100%]   target   color  version   cost  height
+0       0     red        1   5.99      12
+1       0   green        2   5.99      13
+2       0    blue        3   5.99      14
+3       0     red        1   5.99      15
+4       0  purple        4  10.99      16
+5       1  orange        5  10.99      17
+6       1  yellow        6  10.99      18
+7       1   green        2  12.99      19
+8       1    blue        3  12.99      20
+9       1     red        8  12.99      21
+   target   color  version   cost  height
+0     0.0     red        1   5.99      12
+1     0.0   green        2   5.99      13
+2     0.0    blue        3   5.99      14
+3     0.0     red        1   5.99      15
+4     0.0  purple        4  10.99      16
+5     1.0  orange        5  10.99      17
+6     1.0  yellow        6  10.99      18
+7     1.0   green        2  12.99      19
+8     1.0    blue        3  12.99      20
+9     1.0     red        8  12.99      21
+
+
+def make_DF_from_2d_array(array_2d:np.array,column_name_list:list[str],index:pd.Series) -> pd.DataFrame:
+
+Numpy array
+
+Constructing DataFrame from numpy ndarray:
+
+df2 = pd.DataFrame(np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
+                   columns=['a', 'b', 'c'])
+df2
+   a  b  c
+0  1  2  3
+1  4  5  6
+2  7  8  9
+Constructing DataFrame from a numpy ndarray that has labeled columns:
+
+data = np.array([(1, 2, 3), (4, 5, 6), (7, 8, 9)],
+                dtype=[("a", "i4"), ("b", "i4"), ("c", "i4")])
+df3 = pd.DataFrame(data, columns=['c', 'a'])
+
+df3
+
+    # df = pd.DataFrame(array = a, columns = b, index = c, dtypes = d)
+
+def sort_DF_by_column(dataset:pd.DataFrame,column_name:str,descending:bool) -> pd.DataFrame:
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html
+
+INPUTS
+dataset - a pandas DataFrame that contains some data
+column_name - a string that contains the column name to sort the data on
+descending - a boolean value (True or False) for if the column should be sorted in descending order
+
+    # df.sort_values(by='col1', ascending=False, na_position='first')
+
+Df = dataset  > then add sort_values method
+
+def drop_NA_cols(dataset:pd.DataFrame) -> pd.DataFrame:
+
+In this function you are given a DataFrame. You will return a DataFrame with any columns containing NA values dropped
+
+Useful Resources
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html
+
+INPUTS
+dataset - a pandas DataFrame that contains some data
+
+
+def make_new_column(dataset:pd.DataFrame,new_column_name:str,new_column_value:list) -> pd.DataFrame:
+
+INPUTS
+dataset - a pandas DataFrame that contains some data
+new_column_name - a string containing the name of the new column to be created
+new_column_value - a string containing a static value that will be set for the new column for every row
+OUTPUTS
+a pandas DataFrame with the new column created named new_column_name and filled with the value in new_column_value
+
+
+Link:
+https://pandas.pydata.org/pandas-docs/stable/getting_started/intro_tutorials/05_add_columns.html
+
+This is better
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rename.html#pandas.DataFrame.rename
+
+
+What this can do: 
+
+The calculation of the values is done element-wise. This means all values in the given column are multiplied by the value 1.882 at once. You do not need to use a loop to iterate each of the rows!
+
+In [4]: air_quality["london_mg_per_cubic"] = air_quality["station_london"] * 1.882
+
+In [5]: air_quality.head()
+Out[5]: 
+
+This was helpful: 
+air_quality["london_mg_per_cubic"] = air_quality["station_london"] * 1.882
+
+
+def left_merge_DFs_by_column(left_dataset:pd.DataFrame,right_dataset:pd.DataFrame,join_col_name:str) -> pd.DataFrame:
+
+
+In this function you are given 2 datasets and the name of a column with which you will left join them on using the pandas merge method. The left dataset is dataset1 right dataset is dataset2, for example purposes.
+Useful Resources
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.merge.html https://stackoverflow.com/questions/53645882/pandas-merging-101
+INPUTS
+left_dataset - a pandas DataFrame that contains some data
+right_dataset - a pandas DataFrame that contains some data
+join_col_name - a string containing the column name to join the two DataFrames on
+OUTPUTS
+a pandas DataFrame containing the two datasets left joined together on the given column name
+Notes:
+
+# df1.merge(df2, how='left', on='a')
+
+
+class simpleClass():
+
+This project will require you to work with Python Classes. If you are not familiar with them we suggest learning a bit more about them.
+
+You will take the inputs into the class initialization and set them as instance variables (of the same name) in the Python class.
+
+Useful Resources
+https://www.w3schools.com/python/python_classes.asp
+
+INPUTS
+length - an integer
+width - an integer
+height - an integer
+OUTPUTS
+None, just setup the init method in the class.
+
+
+def find_dataset_statistics(dataset:pd.DataFrame,label_col:str) -> tuple[int,int,int,int,int]:
+
+find_dataset_statistics
+Now that you have learned a bit about pandas DataFrames, we will use them to generate some simple summary statistics for a DataFrame. You will be given the dataset as an input variable, as well as a column name for a column in the dataset that serves as a label column. This label column contains binary values (0 and 1) that you also summarize, and also the variable to predict.
+In this context:
+0 represents a “negative” sample (e.g. if the column is IsAVirus and we think it is false)
+1 represents a “positive” sample (e.g. if the column is IsAVirus and we think it is true)
+This type of binary classification is common in machine learning tasks where we want to be able to predict the field. An example of where this could be useful would be if we were looking at network data, and the label column was IsVirus. We could then analyze the network data of Georgia Tech services and predict if incoming files look like a virus (and if we should alert the security team).
+Useful Resources
+https://www.learndatasci.com/glossary/binary-classification/
+https://developers.google.com/machine-learning/crash-course/framing/ml-terminology
+INPUTS
+dataset - a pandas DataFrame that contains some data
+label_col - a string containing the name of the label column
+OUTPUTS
+n_records (int) - the number of rows in the dataset
+n_columns (int) - the number of columns in the dataset
+n_negative (int) - the number of “negative” samples in the dataset (the argument label column equals 0)
+n_positive (int) - the number of “positive” samples in the dataset (the argument label column equals 1)
+perc_positive (int) - the percentage (out of 100%) of positive samples in the dataset ** int( whole %%)
+
+
+
+True Positive (TP): The patient is diseased and the model predicts "diseased"
+False Positive (FP): The patient is healthy but the model predicts "diseased"
+True Negative (TN): The patient is healthy and the model predicts "healthy"
+False Negative (FN): The patient is diseased and the model predicts "healthy"
+n_records = len(dataset)
+n_columns = len(dataset.columns)
+n_negative = sum(dataset[label_col] == 0)
+n_positive = sum(dataset[label_col] == 1)
+perc_positive = int((n_positive / n_records) * 100)
+Task 2: 
+Useful Links:
+Training and Test Sets - Machine Learning - Google Developers
+Bias–variance tradeoff - Wikipedia
+Overfitting - Wikipedia
+Categorical and Numerical Types of Data - 365 Data Science
+scikit-learn: machine learning in Python — scikit-learn 1.2.1 documentation
+def tts(  dataset: pd.DataFrame,
+
+
+Testing
+from sklearn.model_selection import train_test_split
+features, labels = train_test_split(dataset, train_size=.8)
+
+
+print(features)
+
+
+
+
+train_features = train_test_split(dataset, shuffle=False)
+test_features = pd.DataFrame
+train_labels = train_test_split(dataset, train_size=.8)
+test_labels = train_test_split(dataset, train_size=.8)
+
+
+Using debugger!!!
+
+2a: PreprocessDataset:__init__
+Similar to the Task1 simpleClass subtask you previously completed you will initialize the class by adding instance variables (add all the inputs to the class).
+
+Useful Resources
+https://www.w3schools.com/python/python_classes.asp
+INPUTS
+one_hot_encode_cols - a list of column names (strings) that should be one hot encoded by the one hot encode methods
+min_max_scale_cols - a list of column names (strings) that should be min/max scaled by the min/max scaling methods
+n_components - an int that contains the number of components that should be used in Principal Component Analysis
+feature_engineering_functions - a dictionary that contains feature name and function to create that feature as a key value pair (example shown below)
+
+Don’t worry about copying it we also have examples in the local test cases this is just provided as an illustration of what to expect in your function.
+
+OUTPUTS
+None, just assign all the input parameters to class variables.
+
+Also per the instructions below, you’ll return here and create another instance variable: a scikit-learn OneHotEncoder with any Parameters you may need later.
+
+
+Debugger:
+
+self =     color  version   cost  height
+0     red        1   5.99      12
+6  yellow        6  10.99      18
+3     red       ... 3   5.99      14
+5  orange        5  10.99      17
+1   green        2   5.99      13
+7   green        2  12.99      19
+indices = ['color', 'version'], axis = 0, kwargs = {}
+
+    @final
+    def take(self, indices, axis: Axis = 0, **kwargs) -> Self:
+        """
+        Return the elements in the given *positional* indices along an axis.
+    
+        This means that we are not indexing according to actual values in
+        the index attribute of the object. We are indexing according to the
+        actual position of the element in the object.
+    
+        Parameters
+        ----------
+        indices : array-like
+            An array of ints indicating which positions to take.
+        axis : {0 or 'index', 1 or 'columns', None}, default 0
+            The axis on which to select elements. ``0`` means that we are
+            selecting rows, ``1`` means that we are selecting columns.
+            For `Series` this parameter is unused and defaults to 0.
+        **kwargs
+            For compatibility with :meth:`numpy.take`. Has no effect on the
+            output.
+    
+        Returns
+        -------
+        same type as caller
+            An array-like containing the elements taken from the object.
+    
+        See Also
+        --------
+        DataFrame.loc : Select a subset of a DataFrame by labels.
+        DataFrame.iloc : Select a subset of a DataFrame by positions.
+        numpy.take : Take elements from an array along an axis.
+    
+        Examples
+        --------
+        >>> df = pd.DataFrame([('falcon', 'bird', 389.0),
+        ...                    ('parrot', 'bird', 24.0),
+        ...                    ('lion', 'mammal', 80.5),
+        ...                    ('monkey', 'mammal', np.nan)],
+        ...                   columns=['name', 'class', 'max_speed'],
+        ...                   index=[0, 2, 3, 1])
+        >>> df
+             name   class  max_speed
+        0  falcon    bird      389.0
+        2  parrot    bird       24.0
+        3    lion  mammal       80.5
+        1  monkey  mammal        NaN
+    
+        Take elements at positions 0 and 3 along the axis 0 (default).
+    
+        Note how the actual indices selected (0 and 1) do not correspond to
+        our selected indices 0 and 3. That's because we are selecting the 0th
+        and 3rd rows, not rows whose indices equal 0 and 3.
+    
+        >>> df.take([0, 3])
+             name   class  max_speed
+        0  falcon    bird      389.0
+        1  monkey  mammal        NaN
+    
+        Take elements at indices 1 and 2 along the axis 1 (column selection).
+    
+        >>> df.take([1, 2], axis=1)
+            class  max_speed
+        0    bird      389.0
+        2    bird       24.0
+        3  mammal       80.5
+        1  mammal        NaN
+    
+        We may take elements using negative integers for positive indices,
+        starting from the end of the object, just like with Python lists.
+    
+        >>> df.take([-1, -2])
+             name   class  max_speed
+        1  monkey  mammal        NaN
+        3    lion  mammal       80.5
+        """
+    
+        nv.validate_take((), kwargs)
+
+One Hot encoder
+
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder.get_feature_names_out
+
+
+
+
+Min max
+def min_max_scaled_columns_train(self,train_features:pd.DataFrame) -> pd.DataFrame:
+   # TODO: Read the function description in https://github.gatech.edu/pages/cs6035-tools/cs6035-tools.github.io/Projects/Machine_Learning/Task2.html and implement the function as described
+
+
+   train_scale = train_features[self.min_max_scaled_cols]
+   train_scale_other = train_features.drop(columns=self.min_max_scaled_cols)
+   self.scalar = MinMaxScaler()
+   re_scalar = self.scalar.fit_transform(train_scale)
+   train_scale_df = pd.DataFrame(re_scalar,
+                                 columns=train_scale.columns)
+   train_scale_df.index = train_features.index
+   min_max_scaled_dataset = pd.concat([train_scale_df, train_scale_other], axis= 1)
+   return min_max_scaled_dataset
+
+
+def min_max_scaled_columns_test(self,test_features:pd.DataFrame) -> pd.DataFrame:
+   # TODO: Read the function description in https://github.gatech.edu/pages/cs6035-tools/cs6035-tools.github.io/Projects/Machine_Learning/Task2.html and implement the function as described
+
+
+   test_scale = test_features[self.min_max_scaled_cols]
+   test_scale_other = test_features.drop(columns=self.min_max_scaled_cols)
+   test_scale_fit = self.scalar.transform(test_scale)
+   test_scale_df = pd.DataFrame(test_scale_fit,
+                                columns=test_scale.columns)
+   test_scale_df.index = test_features.index
+   min_max_scaled_dataset = pd.concat([test_scale_df, test_scale_other], axis=1)
+   return min_max_scaled_dataset
+
+
+PCA_train
+
+https://builtin.com/data-science/step-step-explanation-principal-component-analysis
+https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA
+https://datascience.stackexchange.com/questions/103211/do-we-need-to-pre-process-both-the-test-and-train-data-set
+
+train_pca = PCA(n_components=self.n_components, random_state=0)
+self.train_pac_fit = train_pca.fit(train_features)
+train_pca_fit = train_pca.fit_transform(train_features)
+column_names = [f'component_{i + 1}' for i in range(train_pca.n_components_)]
+train_pca_df = pd.DataFrame(train_pca_fit,
+                           columns=column_names)
+train_pca_df.index = train_features.index
+pca_dataset = train_pca_df
+return pca_dataset
+
+
+Feature_engineering
+
+https://en.wikipedia.org/wiki/Feature_engineering
+https://www.geeksforgeeks.org/what-is-feature-engineering/
+What is a feature?
+
+
+Moving on!!
+
+Kmeans
+Test_kmeans_train:
+
+
+
+Task4:
+
+Confusion matrix
+https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix
+
+https://onlineconfusionmatrix.com/
+
+
+"roc_auc" : 0
+
+What is it?
+# roc_auc_score(y, clf.predict_proba(X)[:, 1])
+
+log_reg_importance = pd.DataFrame()
+
+RFE
+
+https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html#sklearn.feature_selection.RFE
+

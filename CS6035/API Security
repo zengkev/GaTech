@@ -1,0 +1,115 @@
+Validation for Json
+
+https://jsonformatter.curiousconcept.com/
+
+What is JWT
+https://portswigger.net/web-security/jwt
+
+The header and payload parts of a JWT are just base64url-encoded JSON objects.
+
+If you want to gain a better understanding of how JWTs are constructed, you can use the debugger on jwt.io to experiment with arbitrary tokens.
+
+Read
+Burp Suite
+https://portswigger.net/burp/documentation/desktop/testing-workflow/session-management/jwts
+
+H/a64w6g(')G*5ExSy4]R6s_!q.E{a@~
+
+How to prevent JWT attacks
+You can protect your own websites against many of the attacks we've covered by taking the following high-level measures:
+
+Use an up-to-date library for handling JWTs and make sure your developers fully understand how it works, along with any security implications. Modern libraries make it more difficult for you to inadvertently implement them insecurely, but this isn't foolproof due to the inherent flexibility of the related specifications.
+
+Make sure that you perform robust signature verification on any JWTs that you receive, and account for edge-cases such as JWTs signed using unexpected algorithms.
+
+Enforce a strict whitelist of permitted hosts for the jku header.
+
+Make sure that you're not vulnerable to path traversal or SQL injection via the kid header parameter.
+
+Additional best practice for JWT handling
+Although not strictly necessary to avoid introducing vulnerabilities, we recommend adhering to the following best practice when using JWTs in your applications:
+
+Always set an expiration date for any tokens that you issue.
+
+Avoid sending tokens in URL parameters where possible.
+
+Include the aud (audience) claim (or similar) to specify the intended recipient of the token. This prevents it from being used on different websites.
+
+Enable the issuing server to revoke tokens (on logout, for example).
+
+
+Cross-origin resource sharing (CORS)
+
+https://portswigger.net/web-security/cors
+
+
+RSA and encryption 
+
+https://www.youtube.com/watch?v=94cSN4O09qg&t=1s
+
+Python pow function
+
+
+
+Project Instruction:
+
+https://github.gatech.edu/pages/cs6035-tools/cs6035-tools.github.io/Projects/API_Security/
+Installing VM first
+
+
+Virtualbox updating
+
+The VM username and password is apisec and Chris_Cornell
+
+
+Run this at the terminal to start the API
+$ ./StartContainer.sh
+
+
+
+
+
+
+GT ID: 904049121
+
+
+Tips: get the ID correctly
+
+
+https://www.youtube.com/watch?v=WXsD0ZgxjRw&t=219s
+
+
+
+
+Flag 1: 
+Post a language
+Add review using the id
+Add reply using review id
+Use authorization to delete language
+Flag 2: 
+Ctlr+f for password in the review docu to find “stolen credentials”
+Use the new token to add to bearer token in postman
+
+
+Flag 3: 
+craft the correct payload
+
+
+Flag 4: 
+Change reviewer to moderator 
+Make sure the aug is not “none”
+
+
+Flag 5
+Change to “TOP_SECR**********************”
+Key is in the config file
+
+
+Flag 6: 
+Using python to create a wordlist up to 7 digits
+Hashcat for key -m 16500
+Put the weak key from hashcat in to the weakly token
+
+Flag 7: 
+
+It’s easy
