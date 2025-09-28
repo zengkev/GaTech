@@ -1,0 +1,66 @@
+sequenceDiagram
+    participant U as User
+    participant AL as ApplicationLogic
+    participant J as Job
+    participant L as Location
+    participant R as Relocation
+    participant W as Wellness
+    participant I as Insurance
+    participant CS as ComparisonSettings
+
+    Note over U,AL: 1. Create Job (Current or Offer)
+    U->>AL: Enters new job details
+    AL->>L: Create Location
+    AL->>R: Create Relocation
+    AL->>W: Create Wellness
+    AL->>I: Create Insurance
+    AL->>J: Create Job Object
+    AL->>J: Set isCurrentJob (based on user input)
+
+
+    Note over U,AL: 2. Update Comparison Settings
+    U->>AL: Adjusts comparison weights
+    AL->>CS: Set Weights
+
+    Note over U,AL: 3. Rank All Jobs
+    U->>AL: Request ranked list
+    AL->>CS: Get Settings
+    CS-->>AL: currentSettings
+    loop For each available Job
+        AL->>J: calculateScore(currentSettings)
+        activate J
+        J->>J: Get Adjusted Salary/Bonus
+        J->>R: Get Reimbursement
+        J->>W: Get Annual Benefit
+        J->>I: Get Annual Value
+        J-->>AL: jobScore
+        deactivate J
+    end
+    AL->>AL: Sort Jobs by Score
+    AL-->>U: Return Ranked List
+
+    Note over U,AL: 4. Compare Two Selected Jobs
+    U->>AL: Selects Job1 & Job2 for comparison
+    AL->>CS: Get Settings
+    CS-->>AL: currentSettings
+
+    AL->>J: Job1.calculateScore(settings)
+    activate J
+    J->>J: Get Adjusted Salary/Bonus
+    J->>R: Get Reimbursement
+    J->>W: Get Annual Benefit
+    J->>I: Get Annual Value
+    J-->>AL: score1
+    deactivate J
+
+    AL->>J: Job2.calculateScore(settings)
+    activate J
+    J->>J: Get Adjusted Salary/Bonus
+    J->>R: Get Reimbursement
+    J->>W: Get Annual Benefit
+    J->>I: Get Annual Value
+    J-->>AL: score2
+    deactivate J
+
+    AL->>AL: Compare Scores
+    AL-->>U: Return Comparison Result

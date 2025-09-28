@@ -1,0 +1,185 @@
+Akron, Ohio
+Albany, New York
+Albuquerque, New Mexico
+Allentown, Pennsylvania
+Amarillo, Texas
+Anchorage, Alaska
+Ann Arbor, Michigan
+Arcata, California
+Arlington, Texas
+Asheville, North Carolina
+Athens, Georgia
+Atlanta, Georgia
+Augusta, Georgia
+Austin, Texas
+Babylon, New York
+Bakersfield, California
+Baltimore, Maryland
+Baton Rouge, Louisiana
+Beaverton, Oregon
+Berkeley, California
+Billings, Montana
+Birmingham, Alabama
+Bismarck, North Dakota
+Boise, Idaho
+Boston, Massachusetts
+Boulder, Colorado
+Bozeman, Montana
+Bridgeport, Connecticut
+Buffalo, New York
+Burlington, Massachusetts
+Burlington, Vermont
+Butte, Montana
+Cedar Falls, Iowa
+Cedar Rapids, Iowa
+Charleston, South Carolina
+Charlotte, North Carolina
+Charlottesville, Virginia
+Chattanooga, Tennessee
+Chicago, Illinois
+Cincinnati, Ohio
+Cleveland, Ohio
+Cocoa Beach, Florida
+Colorado Springs, Colorado
+Columbia, South Carolina
+Columbus, Ohio
+Corpus Christi, Texas
+Dallas, Texas
+Denver, Colorado
+Des Moines, Iowa
+Detroit, Michigan
+Durango, Colorado
+Durham, North Carolina
+El Centro, California
+El Paso, Texas
+Erie, Pennsylvania
+Eugene, Oregon
+Fargo
+Flint, Michigan
+Florence, Alabama
+Fort Collins, Colorado
+Fort Lauderdale, Florida
+Fort Wayne, Indiana
+Fort Worth, Texas
+Fresno, California
+Gainesville, Florida
+Grand Rapids
+Green Bay, Wisconsin
+Greensboro, North Carolina
+Greenville, South Carolina
+Harrisburg, Pennsylvania
+Hartford, Connecticut
+Hilton Head Island, South Carolina
+Honolulu, Hawaii
+Houston, Texas
+Huntsville, Alabama
+Indianapolis, Indiana
+Iowa City, Iowa
+Irvine, California
+Ithaca, New York
+Jackson, Mississippi
+Jacksonville, Florida
+Jersey City, New Jersey
+Kansas City, Missouri
+Knoxville, Tennessee
+Kodiak, Alaska
+Lafayette, Louisiana
+Laguna Niguel, California
+Las Vegas, Nevada
+Lawrence, Kansas
+Lexington, Kentucky
+Lincoln, Nebraska
+Little Rock, Arkansas
+Long Beach, California
+Los Angeles, California
+Louisville, Kentucky
+Lubbock, Texas
+Lynchburg, Virginia
+Madison, Wisconsin
+Maui
+McAllen, Texas
+Memphis, Tennessee
+Miami, Florida
+Midland, Texas
+Milwaukee, Wisconsin
+Minneapolis - St. Paul, Minnesota
+Moab, Utah
+Mobile, Alabama
+Modesto, California
+Montclair, New Jersey
+Mount Pleasant, South Carolina
+Mountain View, California
+Naknek, Alaska
+Nantucket
+Nashville, Tennessee
+New Haven, Connecticut
+New Orleans, Louisiana
+New York City
+Newark, New Jersey
+Niagara Falls, New York
+Oakland, California
+Oklahoma City, Oklahoma
+Omaha, Nebraska
+Orlando, Florida
+Palm Bay, Florida
+Palm Springs, California
+Palo Alto, California
+Pensacola, Florida
+Philadelphia, Pennsylvania
+Phoenix, Arizona
+Pittsburgh, Pennsylvania
+Portland, Oregon
+Providence, Rhode Island
+Provo, Utah
+Raleigh, North Carolina
+Reno, Nevada
+Richmond, Virginia
+Riverside, California
+Roanoke, Virginia
+Rochester, New York
+Rockford, Illinois
+Sacramento, California
+Salt Lake City, Utah
+San Antonio, California
+San Antonio, Texas
+San Bernardino, California
+San Diego, California
+San Francisco, California
+San Jose, California
+San Luis Obispo, California
+Santa Ana, California
+Santa Barbara, California
+Santa Cruz, California
+Santa Fe, New Mexico
+Savannah, Georgia
+Scottsdale, Arizona
+Seattle, Washington
+Shreveport, Louisiana
+Spokane, Washington
+Springfield, Illinois
+Springfield, Massachusetts
+Springfield, Missouri
+St. Louis, Missouri
+St. Petersburg, Florida
+Stamford, Connecticut
+Staunton, Virginia
+Stockton, California
+Tacoma, Washington
+Tallahassee, Florida
+Tampa, Florida
+Tempe, Arizona
+Toledo, Ohio
+Traverse City, Michigan
+Tucson, Arizona
+Tulsa, Oklahoma
+Tyler, Texas
+Vancouver, Washington
+Virginia Beach, Virginia
+Walnut Creek, California
+Washington D.C.
+Waterbury, Connecticut
+West Lafayette, Indiana
+Wichita, Kansas
+Wilmington, Delaware
+Youngstown, Ohio
+Zanesville, Ohio
